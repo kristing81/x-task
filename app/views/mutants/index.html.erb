@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h1>All Mutants</h1>
+        <% @mutants.each do |mutant| %>
+          <p><%= link_to mutant.name, mutant_path(mutant.id) %></p>
+        <% end %>
+        <%= link_to "Add a Mutant", new_mutant_path, class: "btn btn-info" %>
+    </div>
+  </div>
+</div>

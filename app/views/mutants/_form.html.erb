@@ -1,0 +1,11 @@
+ <%= form_for @mutant, class: 'form-horizontal', remote: true do |f| %>
+   <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Assign to a team" %>
+    <%= f.collection_select :team_id, Team.all, :id, :name, input_html: {class: "form-control", id: 'mutant_team_id'} %>
+  </div>
+   <%= f.submit "Save", class: "btn btn-success" %>
+ <% end %>

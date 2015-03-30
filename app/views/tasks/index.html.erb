@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h1>All Tasks</h1>
+        <% @tasks.each do |task| %>
+          <p><%= link_to task.description, task_path(task.id) %></p>
+        <% end %>
+        <%= link_to "Add a Task", new_task_path, class: "btn btn-info" %>
+    </div>
+  </div>
+</div>
