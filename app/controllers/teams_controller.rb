@@ -5,6 +5,8 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    @tasks = @team.tasks
+    @mutants = @team.mutants
   end
 
   def new
@@ -50,6 +52,6 @@ class TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :task_id)
   end
 end

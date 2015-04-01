@@ -5,6 +5,7 @@ class MutantsController < ApplicationController
 
   def show
     @mutant = Mutant.find(params[:id])
+    @team = @mutant.team
   end
 
   def new
@@ -47,6 +48,6 @@ class MutantsController < ApplicationController
 
   private
   def mutant_params
-    params.require(:mutant).permit(:name)
+    params.require(:mutant).permit(:name, :team_id)
   end
 end

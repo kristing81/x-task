@@ -2,6 +2,8 @@
   <div class="jumbotron">
     <h1>Welcome Professor X!</h1>
     <h2>What would you like to do today?</h2>
-    <!-- Add buttons to tasks and teams -->
+    <%= link_to "Add a Mutant", new_mutant_path, class: "btn btn-info" %>
+    <%= link_to "Add a Team", new_team_path, class: "btn btn-default" %>
+    <%= link_to "Add a Task", new_task_path, class: "btn btn-warning" %>
   </div>
 </div> 

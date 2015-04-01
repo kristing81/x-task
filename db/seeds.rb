@@ -1,29 +1,26 @@
- require 'faker'
+require 'faker'
 
-# Create mutants 
-20.times do
-   Mutant.create!(
-     name:  Faker::Name.name
-   )
- end
- mutants = Mutant.all
- 
- # Create Teams
- 5.times do
-   Team.create!(
-     name:  Faker::Company.name
-   )
- end
- teams= Team.all
-
- # Create Tasks
- 10.times do
-   Task.create!(
-    description: Faker::Company.bs
-   )
- end
-
- tasks = Task.all
+# Create Teams with Tasks and Mutants
+5.times do
+ team = Team.create!(
+   name:  Faker::Company.name
+ )
+10.times do
+ Task.create!(
+  description: Faker::Company.bs,
+  team: team
+ )
+end
+10.times do
+ Mutant.create!(
+   name:  Faker::Name.name,
+   team: team
+ )
+end
+end
+teams= Team.all
+tasks = Task.all
+mutants = Mutant.all
 
  puts "Seed finished"
 

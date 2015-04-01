@@ -5,6 +5,7 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    @team = @task.team
   end
 
   def new
@@ -15,7 +16,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     if @task.save
       flash[:notice] = "Your task was created"
-      redirect_to tasks_path
+      redirect_to @task
     else
       flash[:error] = "There was a complication saving your task.  Please try again"
       render :new
@@ -39,15 +40,16 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.destroy
       flash[:notice] = "Your task was destroyed"
+      redirect_to tasks_path
     else
       flash[:error] = "Your task is still here.  Try destroying again"
     end
-    redirect_to tasks_path 
+    
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:description)
+    params.require(:task).permit(:description, :team_id)
   end
 end
